@@ -23,9 +23,9 @@ class MainWindow < Gosu::Window
     # visibleではオブジェクトの表示非表示を設定
     @kani1.visible = true
     @kani1.set_pos(760, 100)
-    @kani1.set_angle(0)
+    @kani1.set_angle(180)
     @ball = Ball.instance
-    @ball.visible = true
+    @ball.visible = false
     @ball.set_pos(560,200)
     @characters = [@kani1, @ball]
   end
@@ -64,6 +64,7 @@ def draw_horizontal_lines # 縦のマス目を描画
       draw_line(0, y, Gosu::Color::BLACK, width, y, Gosu::Color::BLACK)
   end
 end
+
 
 
 
