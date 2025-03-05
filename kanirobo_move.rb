@@ -23,11 +23,34 @@ loop do
         lm_pin2.duty(00)
         rm_pin1.duty(30)
         rm_pin2.duty(0)
-        res=HTTP.get("http://192.168.6.25:3000/position?op=diff&&y=10") 
-        if (res=="turn")
-
+        HTTP.get("http://192.168.6.25:3000/position?op=diff&x=0&y=1") 
+        if (res=="turn_right")
+            lm_pin1.duty(0)
+            lm_pin2.duty(0)
+            rm_pin1.duty(0)
+            rm_pin2.duty(0)
+            sleep(0.5)
+            lm_pin1.duty(0)
+            lm_pin2.duty(30)
+            rm_pin1.duty(30)
+            rm_pin2.duty(0)
+            sleep(1.75)
+            HTTP.get("http://192.168.6.25:3000/angle?op=diff&&value=90") 
+        else(res=="turn_left")
+            lm_pin1.duty(0)
+            lm_pin2.duty(0)
+            rm_pin1.duty(0)
+            rm_pin2.duty(0)
+            sleep(0.5)
+            lm_pin1.duty(30)
+            lm_pin2.duty(0)
+            rm_pin1.duty(0)
+            rm_pin2.duty(30)
+            sleep(1.75)
+            HTTP.get("http://192.168.6.25:3000/angle?op=diff&&value=-90") 
+        end
         puts res
-        sleep(3)
+        sleep(0.1)
     end
 end
    
