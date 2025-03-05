@@ -29,13 +29,10 @@ class MainWindow < Gosu::Window
     @ball.visible = false
     @ball.set_pos(560,200)
     @characters = [@kani1, @ball]
-
     @path_points = [
       [760, 100], [760, 210], [140, 210], [140, 420], [700, 420], [700, 630], [420, 630],[420, 891]
     ] #　青線の座標
-
     @line_width = 5 # 線の太さを指定
-    
   end
 
   # 1フレーム分の更新処理
@@ -77,10 +74,9 @@ class MainWindow < Gosu::Window
   end
 end
 
-
 def webPostPos # サーバにリクエストを送信、ここで座標関係を共有できるか？
   params = {op: "abs", x: 760, y: 100, angle:0, target:"Kani1"} 
-  uri = URI.parse("http://192.168.6.40:3000/position")  # position~ から先の情報を指定
+  uri = URI.parse("http://192.168.6.25:3000/position")  # position~ から先の情報を指定
   uri.query = URI.encode_www_form(params)
   response = Net::HTTP.get_response(uri)
   
