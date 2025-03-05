@@ -1,4 +1,5 @@
 require 'gosu'
+require 'net/http'
 
 require_relative 'server'
 require_relative 'characters'
@@ -22,7 +23,7 @@ class MainWindow < Gosu::Window
     @kani1 = Kani1.instance
     # visibleではオブジェクトの表示非表示を設定
     @kani1.visible = true
-    @kani1.set_pos(760, 100)
+    @kani1.set_pos(0,0)
     @kani1.set_angle(180)
     @ball = Ball.instance
     @ball.visible = false
@@ -33,6 +34,7 @@ class MainWindow < Gosu::Window
   # 1フレーム分の更新処理
   def update
     exit if Gosu.button_down?(Gosu::KB_ESCAPE)
+    webPost
   end
 
   # 1フレーム分の描画処理
@@ -46,6 +48,16 @@ class MainWindow < Gosu::Window
   end
 end
 
+def webPost # サーバにリクエストを送信、ここで座標関係を共有できるか？
+  params = {op: "abs", x: 500, y: 100}
+  uri = URI.parse("http://192.168.6.40:3000/position")
+  uri.query = URI.encode_www_form(params)
+  response = Net::HTTP.get_response(uri)
+  
+
+  response.code
+  response.body
+end
 
 private 
 
@@ -65,16 +77,14 @@ def draw_horizontal_lines # 縦のマス目を描画
   end
 end
 
-
-
-
-
 # Webrickサーバ開始
 Server.new.run
 
 # メインウィンドウ表示
 window = MainWindow.new
 window.show
+
+
 
 # GET http://192.168.6.25:3000/position?op=abs&x=500&y=100
 # GET http://192.168.6.25:3000/angle?op=abs&value=180
