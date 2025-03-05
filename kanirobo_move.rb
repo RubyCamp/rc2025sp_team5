@@ -24,6 +24,8 @@ loop do
         rm_pin1.duty(30)
         rm_pin2.duty(0)
         res=HTTP.get("http://192.168.6.25:3000/position?op=diff&&y=10") 
+        if (res=="turn")
+
         puts res
         sleep(3)
     end
