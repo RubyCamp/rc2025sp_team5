@@ -23,7 +23,7 @@ class MainWindow < Gosu::Window
     # visibleではオブジェクトの表示非表示を設定
     @kani1.visible = true
     @kani1.set_pos(760, 100)
-    @kani1.set_angle(180)
+    @kani1.set_angle(0)
     @ball = Ball.instance
     @ball.visible = true
     @ball.set_pos(560,200)
@@ -66,6 +66,8 @@ def draw_horizontal_lines # 縦のマス目を描画
 end
 
 
+
+
 # Webrickサーバ開始
 Server.new.run
 
@@ -74,4 +76,5 @@ window = MainWindow.new
 
 window.show
 
-
+# GET http://192.168.6.25:3000/position?op=abs&x=500&y=100
+# GET http://192.168.6.25:3000/angle?op=abs&value=180
