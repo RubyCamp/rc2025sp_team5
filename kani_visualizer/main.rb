@@ -73,8 +73,3 @@ Server.new.run
 window = MainWindow.new
 
 window.show
-
-
-
-
-
