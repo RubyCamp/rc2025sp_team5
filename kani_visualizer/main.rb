@@ -34,7 +34,7 @@ class MainWindow < Gosu::Window
   # 1フレーム分の更新処理
   def update
     exit if Gosu.button_down?(Gosu::KB_ESCAPE)
-    webPost
+    webPostPos
   end
 
   # 1フレーム分の描画処理
@@ -48,9 +48,9 @@ class MainWindow < Gosu::Window
   end
 end
 
-def webPost # サーバにリクエストを送信、ここで座標関係を共有できるか？
-  params = {op: "abs", x: 500, y: 100}
-  uri = URI.parse("http://192.168.6.40:3000/position")
+def webPostPos # サーバにリクエストを送信、ここで座標関係を共有できるか？
+  params = {op: "abs", x: 560, y: 100, angle:0, target:"Kani1"} 
+  uri = URI.parse("http://192.168.6.40:3000/position")# position~ から先の情報を指定
   uri.query = URI.encode_www_form(params)
   response = Net::HTTP.get_response(uri)
   
