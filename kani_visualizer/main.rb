@@ -71,7 +71,8 @@ Server.new.run
 
 # メインウィンドウ表示
 window = MainWindow.new
-
 window.show
+
+
 
 

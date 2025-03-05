@@ -25,10 +25,10 @@ class BaseServlet < WEBrick::HTTPServlet::AbstractServlet
   end
 
   # HTTPクライアントへの成功応答を作成する
-  def succeeded(response)
+  def succeeded(response,body)
     response.status = 200
-    response['Content-Type'] = 'text/html'
-    response.body = '<html><body>done.</body></html>'
+    response['Content-Type'] = 'text/plain'
+    response.body = body
   end
 
   # HTTPクライアントへの失敗応答を作成する
@@ -51,7 +51,14 @@ class PositionServlet < BaseServlet
       when "diff"
         target.instance.add_pos(query["x"].to_i, query["y"].to_i)
       end
-      succeeded(response)
+
+      if (@kani1.x==760&&@kani1.y=170)  
+        succeeded(response,"turn_right")
+      elsif
+      #...
+      else
+      
+      end
     else
       failed(response)
     end
@@ -70,7 +77,7 @@ class AngleServlet < BaseServlet
       when "diff"
         target.instance.add_angle(query["value"].to_i)
       end
-      succeeded(response)
+      succeeded(response,"turn_right")
     else
       failed(response)
     end
@@ -84,7 +91,7 @@ class VisibleServlet < BaseServlet
     target = parse_target(query)
     if validate(query, [:value])
       target.instance.set_visible(query["value"].to_s == "true")
-      succeeded(response)
+      succeeded(response,"OK")
     else
       failed(response)
     end
