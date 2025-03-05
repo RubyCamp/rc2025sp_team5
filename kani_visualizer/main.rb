@@ -32,7 +32,6 @@ class MainWindow < Gosu::Window
     @path_points = [
       [760, 100], [760, 210], [140, 210], [140, 420], [700, 420], [700, 630], [420, 630],[420, 891]
     ] #　青線の座標
-
     @line_width = 5 # 線の太さを指定
   end
 
@@ -107,6 +106,7 @@ def draw_horizontal_lines # 縦のマス目を描画
 end
 
 
+
 # Webrickサーバ開始
 Server.new.run
 
@@ -116,4 +116,5 @@ window.show
 
 
 
-
+# GET http://192.168.6.25:3000/position?op=abs&x=500&y=100
+# GET http://192.168.6.25:3000/angle?op=abs&value=180
