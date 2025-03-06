@@ -66,6 +66,8 @@ class PositionServlet < BaseServlet
         succeeded(response,"turn_right")
       elsif(@kani1.x==420&&@kani1.y==630)
         succeeded(response,"turn_left")
+      elsif (@kani1.x == 420 && @kani1.y == 210) || (@kani1.x == 420 && @kani1.y == 420)
+        succeeded(response, "stop")
       else
         succeeded(response,"go")
       end
