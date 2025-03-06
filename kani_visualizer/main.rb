@@ -38,7 +38,6 @@ class MainWindow < Gosu::Window
   # 1フレーム分の更新処理
   def update
     exit if Gosu.button_down?(Gosu::KB_ESCAPE)
-    webPostPos
   end
 
   # 1フレーム分の描画処理

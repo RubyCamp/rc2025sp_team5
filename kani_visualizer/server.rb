@@ -52,18 +52,22 @@ class PositionServlet < BaseServlet
         target.instance.add_pos(query["x"].to_i, query["y"].to_i)
       end
 
-      if (@kani1.x==760&&@kani1.y=170)
+      @kani1=Kani1.instance
+
+      if (@kani1.x==750&&@kani1.y==210)
         succeeded(response,"turn_right")
-      elsif(@kani1.x==140&&@kani1.y=170)
+      elsif(@kani1.x==150&&@kani1.y==210)
         succeeded(response,"turn_left")
-      elsif(@kani1.x==140&&@kani1.y=380)
+      elsif(@kani1.x==150&&@kani1.y==420)
         succeeded(response,"turn_left")
-      elsif(@kani1.x==660&&@kani1.y=420)
+      elsif(@kani1.x==720&&@kani1.y==420)
         succeeded(response,"turn_right")
-      elsif(@kani1.x==700&&@kani1.y=590)
+      elsif(@kani1.x==720&&@kani1.y==630)
         succeeded(response,"turn_right")
-      else(@kani1.x==420&&@kani1.y=590)
+      elsif(@kani1.x==420&&@kani1.y==630)
         succeeded(response,"turn_left")
+      else
+        succeeded(response,"go")
       end
     else
       failed(response)
