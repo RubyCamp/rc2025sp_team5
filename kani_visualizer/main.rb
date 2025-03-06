@@ -1,7 +1,7 @@
 require 'gosu'
 require 'net/http'
 
-require_relative 'server1'
+require_relative 'server'
 require_relative 'characters'
 
 # ゲームのメインウィンドウ（メインループ）用クラス

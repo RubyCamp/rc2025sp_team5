@@ -46,13 +46,15 @@ else
                 sleep(0.5)
                 servo27.pulse_width_us( 1000 )
                 sleep(1)
-                #flg=1
+                if flg==0
+                    flg=3
+                end
             end
             
             lm_pin1.duty(100)
-            lm_pin2.duty(72)
+            lm_pin2.duty(67-flg)
             rm_pin1.duty(100)
-            rm_pin2.duty(72)
+            rm_pin2.duty(67-flg)
             sleep(0.1)
             
             if(angle0==180)
@@ -122,7 +124,7 @@ else
                 puts "go"
             end
     
-            sleep(0.09)
+            sleep(0.03)
         end
     end
 end
