@@ -1,7 +1,7 @@
 require 'gosu'
 require 'net/http'
 
-require_relative 'server'
+require_relative 'server1'
 require_relative 'characters'
 
 # ゲームのメインウィンドウ（メインループ）用クラス
@@ -112,8 +112,3 @@ Server.new.run
 # メインウィンドウ表示
 window = MainWindow.new
 window.show
-
-
-
-# GET http://192.168.6.25:3000/position?op=abs&x=500&y=100
-# GET http://192.168.6.25:3000/angle?op=abs&value=180
